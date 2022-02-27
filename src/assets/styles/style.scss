@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300&display=swap');
+
+$base-margin-top-bottom: 20px;
+$max-form-width: 350px;
+$font-barlow-sans-serif: 'Barlow Condensed', sans-serif;
+$header-one-font-size: 48px;
+$form-primary: #9e63a5;
+$form-secondary: #8982c3;
+$form-white: #fff;
+$form-focus: #ced4da;
+$form-gray: #9b9b9b;
+
+body {
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+h1{
+  font-size: $header-one-font-size;
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+}
+
+#rootApp {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.CardPaymentPage {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  &__main {
+    margin: auto;
+
+    &__pageHeader {
+      text-align: center;
+    }
+
+    &__formOfAllCreditCardInfo {
+      max-width: $max-form-width;
+
+      &__cardFormGroup {
+        position: relative;
+        // For the override bootstrap form control CSS
+        .form-control {
+          position: relative;
+          font-family: inherit;
+          width: 100%;
+          border: 0;
+          outline: 0;
+          font-size: 1.3rem;
+          border-bottom: 2px solid $form-gray;
+          border-radius: 0;
+          padding: 7px 0 2px 0;
+          background: transparent;
+          transition: border-color 0.2s;
+
+          &::placeholder {
+            color: transparent;
+          }
+        
+          &:placeholder-shown ~ .form__label {
+            font-size: 1.3rem;
+            cursor: text;
+            top: 20px;
+          }
+        }
+        &__input:focus {
+          ~ .form__label {
+            transition: 0.2s;
+            color: $form-primary;
+            font-weight:700;
+          }
+          padding-bottom: 6px;  
+          font-weight: 700;
+          border-width: 3px;
+          border-image: linear-gradient(236deg,$form-primary 50%,$form-secondary);
+          border-image-slice: 1;
+        }
+        &__label {
+          position: absolute;
+          top: -10px;
+          display: block;
+          transition: 0.2s;
+          font-size: 1rem;
+          color: $form-gray;
+          z-index: 2;
+        }
+      }
+
+      &__smallText{
+        padding-left: 5px;
+      }
+
+      &__cardFormActions {
+        padding: auto;
+        &__payButton {
+          margin-top: $base-margin-top-bottom;
+        }
+      }
+    }
+    &__dataPart{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      &__inlineData {
+        display: inline-block;
+      }
+    }
+  }
+  .rccs {
+    margin-top: $base-margin-top-bottom;
+    margin-bottom: $base-margin-top-bottom;
+  }
+  .form-control input{
+    &:required,&:invalid { box-shadow:none; }
+  }
+}
+  
